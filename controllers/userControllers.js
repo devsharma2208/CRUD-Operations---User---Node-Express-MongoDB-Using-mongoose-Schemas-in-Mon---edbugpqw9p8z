@@ -32,7 +32,7 @@ router.get('/users/:id', async (req, res) => {
   try{
     const findUser = await User.findById(id);
     if(findUser){
-    res.status(201).json({message  : "Profile data", userData : findUser})
+    res.status(200).json({message  : "Profile data", userData : findUser})
     }
     else{
       res.status(404).json({message : "User not found"});
@@ -55,7 +55,7 @@ router.patch('/users/:id', async (req, res) => {
   try{
     const findUser = await User.findByIdAndUpdate(id, {$set : updatedData});
     if(findUser){
-    res.status(201).json({message  : "User updated", userData : findUser})
+    res.status(200).json({message  : "User updated", userData : findUser})
     }
     else{
       res.status(404).json({message : "User not found"});
@@ -76,7 +76,7 @@ router.delete('/users/:id', async (req, res) => {
   try{
     const findUser = await User.findByIdAndDelete(id);
     if(findUser){
-    res.status(201).json({message  : "User deleted"})
+    res.status(200).json({message  : "User deleted"})
     }
     else{
       res.status(404).json({message : "User not found"});

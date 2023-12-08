@@ -10,9 +10,9 @@ router.post('/users', async (req, res) => {
   // 2. Create a new user using User.create()
   // 3. Handle success: Respond with a 201 status code and the created user
   // 4. Handle errors: Respond with appropriate error messages and status codes
-  const userData = req.body;
+  const {name, email} = req.body;
   try{
-    const createUser = await User.create(userData);
+    const createUser = await User.create({name, email});
     res.status(201).json({message  : "User created"});
   }catch(err){
     res.status(500).json({message : "Internal server error"});
